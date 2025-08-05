@@ -1,0 +1,18 @@
+select * from dbo.PedidoDeVenda where CdPedidoDeCompraCliente = '34897' 00A0002ATX
+
+
+
+select * from dbo.setor where CdEmpresa = '26'
+
+
+
+--update dbo.PedidoDeVenda
+set CdEmpresa = '26', CdEmpresaEstoque = '26', CdEmpresaFinanceiro = '26', IdSetor = '00A000006J'
+where IdPedidoDeVenda = '00A0002ATX';
+
+
+
+--update dbo.PedidoDeVendaItem
+set IdSetorSaida = '00A000006J'
+
+where IdPedidoDeVenda = '00A0002ATX';

@@ -1,0 +1,12 @@
+select  IdLoteEstoque, * from dbo.Documento
+where NrDocumento='RNT-22518'
+go
+
+select StLoteEstoque, * from dbo.LoteEstoque
+where IdLoteEstoque='00A0002KXT'
+go
+
+update dbo.LoteEstoque
+set StLoteEstoque='L'
+where IdLoteEstoque='00A0002KXT'
+go

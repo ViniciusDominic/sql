@@ -1,0 +1,30 @@
+select * from dbo.pessoa
+where CdChamada='012591' --00A0000EIQ REPRESENTANTE NOVO.
+go                       --00A0000F5W REPRESENTANTE ANTIGO.
+
+select * from dbo.AReceber
+where NrTitulo in ('6948-1','6958-1','6959-1','6970-1') --CONFERE ID DOS TÍTULOS.
+and CdEmpresa='14'
+go
+
+select * from dbo.AReceber
+where NrTitulo like '6970-%' --VERIFICANDO QUANTIDADE DE TÍTULOS DA NF.
+and CdEmpresa='14'
+
+
+
+select * from dbo.AReceberItem
+where IdAReceber in ('00A0002BWO','00A0002BXA','00A0002BXB','00A0002BXC','00A0002C6F','00A0002C6G') --ID DOS TÍTULOS NA TABELA A RECEBER ITEN.
+go
+
+
+select * from dbo.AReceberItem_Pessoa --CONFERINDO OS TÍTULOS COM OS ID'S DA PESSOA.
+where IdAReceberItem in (select IdAReceberItem from dbo.AReceberItem
+where IdAReceber in ('00A0002BWO','00A0002BXA','00A0002BXB','00A0002BXC','00A0002C6F','00A0002C6G'))
+
+update dbo.AReceberItem_Pessoa --ALTERANDO O ID DA PESSOA.
+set IdPessoa = '00A0000EIQ'
+where IdAReceberItem in (select IdAReceberItem from dbo.AReceberItem
+where IdAReceber in ('00A0002BWO','00A0002BXA','00A0002BXB','00A0002BXC','00A0002C6F','00A0002C6G'))
+and IdPessoa <> '00A0000EIQ'
+

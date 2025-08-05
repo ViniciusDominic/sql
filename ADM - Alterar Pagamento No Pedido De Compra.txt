@@ -1,0 +1,33 @@
+select * from dbo.PedidoDeCompra where CdChamada = '033697' -- CHECAR PEDIDO DE COMPRA
+
+select * from dbo.PedidoDeCompraPagamento where IdPedidoDeCompra = '00A000172A'-- CHEGAR O ID DE COMPRA PAGAMENTO ATRAVÉS DO ID PEDIDO DE COMPRA
+
+select * from dbo.apagar where IdEntidadeOrigem = '00A0000U3L' -- UTILIZAR O ID PEDIDO DE COMPRA PAGAMENTO
+
+update dbo.apagar set IdEntidadeOrigem = null, NmEntidadeOrigem = null where IdAPagar = '00A0003P26'; -- ANULAR O RESGITRO PAGO ATRAVÉS DO ID A PAGAR.
+
+update dbo.PedidoDeCompra -- ALTERAR STATUS DO PEDIDO DE COMPRA PARA ABERTO
+set StPedidoDeCompra = 'A'
+where IdPedidoDeCompra = '00A000172A';
+
+Update dbo.PedidoDeCompraItem -- ALTERAR STATUS DO PEDIDO DE COMPRA ITEM PARA ABERTO
+set StPedidoDeCompraItem = 'A'
+where IdPedidoDeCompra = '00A000172A';
+
+update dbo.apagar set IdEntidadeOrigem = '00A0000U3L', NmEntidadeOrigem = 'PedidoDeCompraPagamento' where IdAPagar = '00A0003P26'; -- VINCULAR O ID PEDIDO DE COMPRA PAGAMENTO DE VOLTA AO ID A PAGAR
+
+
+select * from dbo.apagar where NrTitulo like '033697%' and DtExclusao is null
+
+
+delete from dbo.APagarItem where IdAPagar = '00A0003Q5G' -- DELETAR TÍTULO DUPLICADO ITENS
+
+
+delete from dbo.apagar where IdAPagar = '00A0003Q5G' -- DELETAR TÍTULO DUPLICADO PEDIDO
+
+select * from dbo.Categoria
+
+
+update dbo.APagar
+set IdCategoria = '0000000006'
+where IdAPagar = '00A0003P26'

@@ -1,0 +1,6 @@
+select * from dbo.MapaCarregamento
+where CdChamada='012104'
+
+update dbo.MapaCarregamento
+set tporigemmapacarregamento='T'
+where CdChamada='012104'

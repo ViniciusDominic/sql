@@ -1,0 +1,16 @@
+/* QUERY PARA ALTERAÇÃO DE DATA DE VENCIMENTO DO TÍTULO APAGAR. */
+
+USE [ALTERDATA_ERP]
+GO
+
+SELECT DtEmissao , DtVencimento, DtVencimentoOriginal, 
+* FROM DBO.APagar
+WHERE NrTitulo='535-1'
+AND CdEmpresa='20'
+
+UPDATE DBO.APagar 
+SET DtVencimento='2025-04-14 00:00:00.000',DtVencimentoOriginal='2025-04-14 00:00:00.000'
+WHERE IdAPagar='00A00076KQ'
+
+SELECT @@VERSION AS [VERSÃO],
+SYSDATETIME() AS [DATA]

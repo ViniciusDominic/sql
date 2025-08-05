@@ -1,0 +1,23 @@
+/* ALTERAR VALOR DO TÍTULO APAGAR */
+
+USE [ALTERDATA_ERP]
+GO
+
+SELECT VlTitulo , VlOriginal, VlAberto, 
+* FROM DBO.APagar
+WHERE NrTitulo='03359177'
+
+UPDATE DBO.APagar
+SET VlTitulo ='3379.27',
+VlOriginal ='3379.27',
+VlAberto ='3379.27'
+WHERE IdAPagar='00A0007E2T'
+
+SELECT VlItem ,
+* FROM DBO.APagarItem
+WHERE IdAPagar='00A0007E2T'
+
+UPDATE DBO.APagarItem
+SET VlItem='884.00'
+WHERE IdAPagar='00A0007E2T'
+AND IdAPagarItem='00A00047YS'
